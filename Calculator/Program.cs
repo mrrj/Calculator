@@ -23,9 +23,9 @@ namespace Calculator
                     "3. Multiplication \n" +
                     "4. Division \n");
                 string selection = Console.ReadLine();
-                if (int.TryParse(selection, out int x))
+                if (int.TryParse(selection, out int operationChoice))
                 {
-                    switch (x)
+                    switch (operationChoice)
                     {
                         case 0:
                             keepRunning = false;
@@ -88,9 +88,9 @@ namespace Calculator
 
             foreach(string str in splitInput)
             {
-                if(double.TryParse(str, out double x))
+                if(double.TryParse(str, out double number))
                 {
-                    numbers.Add(x);
+                    numbers.Add(number);
                 }
                 else
                 {
