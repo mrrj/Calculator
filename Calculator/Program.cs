@@ -3,15 +3,17 @@ using System.Collections.Generic;
 
 namespace Calculator
 {
-    class Program
+    public class Program
     {
 
-        static List<double> numbers = new List<double>();
-        static double result;
+        private static List<double> numbers = new List<double>();
+        private static double result;
 
         static void Main(string[] args)
         {
+            
             bool keepRunning = true;
+            Calculator calc = new Calculator();
 
             while (keepRunning)
             {
@@ -34,7 +36,7 @@ namespace Calculator
                             //Add
                             if (InitOperation("add"))
                             {
-                                result = Addition(numbers);
+                                result = calc.Addition(numbers);
                                 PrintResult('+');
                             }
                             break;
@@ -42,7 +44,7 @@ namespace Calculator
                             //Subtract
                             if (InitOperation("subtract"))
                             {
-                                result = Subtraction(numbers);
+                                result = calc.Subtraction(numbers);
                                 PrintResult('-');
                             }
                             break;
@@ -50,7 +52,7 @@ namespace Calculator
                             //Multiply
                             if (InitOperation("multiply"))
                             {
-                                result = Multiplication(numbers);
+                                result = calc.Multiplication(numbers);
                                 PrintResult('*');
                             }
                             break;
@@ -58,8 +60,16 @@ namespace Calculator
                             //Divide
                             if (InitOperation("divide"))
                             {
-                                result = Division(numbers);
-                                PrintResult('/');
+                                try {
+                                    result = calc.Division(numbers);
+                                    PrintResult('/');
+                                }
+                                    
+                                catch(DivideByZeroException)
+                                {
+                                    Console.WriteLine("Cannot divide by zero");
+                                }
+
                             }
                             break;
                         default:
@@ -80,15 +90,15 @@ namespace Calculator
 
         }
 
-        static bool InitOperation(string op)
+        public static bool InitOperation(string op)
         {
             Console.WriteLine("Enter numbers to " + op + " separated by blank space");
             string input = Console.ReadLine();
             string[] splitInput = input.Split(" ");
 
-            foreach(string str in splitInput)
+            foreach (string str in splitInput)
             {
-                if(double.TryParse(str, out double number))
+                if (double.TryParse(str, out double number))
                 {
                     numbers.Add(number);
                 }
@@ -102,66 +112,17 @@ namespace Calculator
 
         }
 
-        static double Addition(List<double> numbers)
-        {
-            double x = 0;
-            foreach(double y in numbers)
-            {
-                x += y;
-            }
-            return x;
-        }
-
-        static double Subtraction(List<double> numbers)
-        {
-            double x = 2*numbers[0];
-            foreach (double y in numbers)
-            {
-                x -= y;
-            }
-            return x;
-        }
-
-        static double Multiplication(List<double> numbers)
-        {
-            double x = 1;
-            foreach (double y in numbers)
-            {
-                x *= y;
-            }
-            return x;
-        }
-
-        static double Division(List<double> numbers)
-        {
-            double x = numbers[0];
-
-            for (int i = 1; i < numbers.Count; i++)
-            {
-                if(numbers[i] == 0)
-                {
-                    Console.WriteLine("Cannot divide by zero");
-                    int numberOfElements = numbers.Count - i;
-                    numbers.RemoveRange(i,numberOfElements);
-                }
-                else
-                {
-                    x /= numbers[i];
-                }
-            }
-
-            return x;
-        }
-
-        static void PrintResult(char c)
+        public static void PrintResult(char c)
         {
             int size = numbers.Count - 1;
-            for(int i = 0; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
                 Console.Write(numbers[i] + " " + c + " ");
             }
             Console.WriteLine(numbers[size] + " = " + result);
         }
+
+
     }
 }
 
