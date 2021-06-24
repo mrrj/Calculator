@@ -44,8 +44,11 @@ namespace Calculator
                             //Subtract
                             if (InitOperation("subtract"))
                             {
+                                double[] numbersArray = new double[] { (-11), (-8) };
+                                double resultArray = calc.Subtraction(numbersArray);
                                 result = calc.Subtraction(numbers);
                                 PrintResult('-');
+                                Console.WriteLine("Array result: " + resultArray);
                             }
                             break;
                         case 3:
