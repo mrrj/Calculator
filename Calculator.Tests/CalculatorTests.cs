@@ -10,92 +10,103 @@ namespace Calculator.Tests
         public void AdditionWithZero()
         {
 
-            Calculator calc = new Calculator();
-            List<double> numbers = new List<double> { 2, 8 };
-            List<double> numbers0 = new List<double>() { 2, 0, 8 };
+            double[] numbers = new double[] { 2, 8, 5 };
+            double[] numbers0 = new double[] { 2, 0, 8, 5 };
+
+            double addNumbers = Calculator.Addition(numbers);
+            double addNUmbersWithZero = Calculator.Addition(numbers0);
 
             //addition with zero should return the same number
-            Assert.Equal<double>(calc.Addition(numbers), calc.Addition(numbers0));
+            Assert.Equal<double>(addNumbers, addNUmbersWithZero);
           
         }
 
         [Fact]
         public void SubtractionWithZero()
         {
-            Calculator calc = new Calculator();
-            List<double> numbers = new List<double> { 11, 8 };
-            List<double> numbers0 = new List<double>() { 11, 0, 8 };
+            double[] numbers = new double[] { 11, 8 };
+            double[] numbers0 = new double[] { 11, 0, 8 };
+
+            double subtractNumbers = Calculator.Subtraction(numbers);
+            double subtractNumbersWithZero = Calculator.Subtraction(numbers0);
 
             //subtraction with zero should return the same number
-            Assert.Equal<double>(calc.Subtraction(numbers), calc.Subtraction(numbers0));
+            Assert.Equal<double>(subtractNumbers,subtractNumbersWithZero);
 
         }
 
         [Fact]
         public void SubtractionWithNegatives()
         {
-            Calculator calc = new Calculator();
             double[] numbers = new double[] { 11, 8, (-9) };
-            double subtractNumbers = calc.Subtraction(numbers);
+
+            double subtractNumbers = Calculator.Subtraction(numbers);
             double addNumbers = 11 - 8 + 9;
 
             //subtracting a negative should be equal to addition
-            Assert.Equal<double>(calc.Subtraction(numbers), addNumbers);
+            Assert.Equal<double>(subtractNumbers, addNumbers);
 
         }
 
 
         [Fact]
-        public void MultiplicationWtihZero()
+        public void MultiplicationByZero()
         {
-            Calculator calc = new Calculator();
             double[] numbers = new double[] { 5, 0, 11 };
 
-            //multiplication with zero should return zero
-            Assert.Equal<double>(0, calc.Multiplication(numbers));
+            double multiplyByZero = Calculator.Multiplication(numbers);
+
+            //multiplication by zero should return zero
+            Assert.Equal<double>(0, multiplyByZero);
         }
 
         [Fact]
-        public void MultiplicationWtihOne()
+        public void MultiplicationByOne()
         {
-            Calculator calc = new Calculator();
             double[] numbers = new double[] { 5, 22 };
             double[] numbers1 = new double[] { 5, 22, 1 };
 
-            //multiplication with one should return the same number
-            Assert.Equal<double>(calc.Multiplication(numbers), calc.Multiplication(numbers1));
+            double mutliplyNumbers = Calculator.Multiplication(numbers);
+            double mutliplyNumbersByOne = Calculator.Multiplication(numbers1);
+
+            //multiplication by one should return the same number
+            Assert.Equal<double>(mutliplyNumbers,mutliplyNumbersByOne);
         }
 
         [Fact]
         public void MultiplyNegatives()
         {
-            Calculator calc = new Calculator();
             double[] numbersPositive = new double[] { 5, 7 };
             double[] numbersNegative = new double[] { (-5), (-7) };
 
+            double multiplyPositives = Calculator.Multiplication(numbersPositive);
+            double multiplyNegatives = Calculator.Multiplication(numbersNegative);
+
             //multiplying two negatives should yield the same result as positives
-            Assert.Equal<double>(calc.Multiplication(numbersPositive), calc.Multiplication(numbersNegative));
+            Assert.Equal<double>(multiplyPositives, multiplyNegatives);
         }
 
         [Fact]
         public void DivisionByOne()
         {
-            Calculator calc = new Calculator();
-
-            //division by one should return the same number
             double[] numbers = new double[] { 7, 8 };
             double[] numbers1 = new double[] { 7, 8, 1 };
-            Assert.Equal<double>(calc.Division(numbers), calc.Division(numbers1));
+
+            double divideNumbers = Calculator.Division(numbers);
+            double divideByOne = Calculator.Division(numbers1);
+
+            //division by one should return the same number
+
+            Assert.Equal<double>(divideNumbers, divideByOne);
         }
 
         [Fact]
         public void DivisionByZero()
         {
-            Calculator calc = new Calculator();
             double[] numbers = new double[] { 5, 7, 0 };
 
             //division by zero should throw DivideByZeroException
-            Assert.Throws<DivideByZeroException>(() => calc.Division(numbers));
+            Assert.Throws<DivideByZeroException>(() => Calculator.Division(numbers));
 
         }
 

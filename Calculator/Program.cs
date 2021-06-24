@@ -13,7 +13,6 @@ namespace Calculator
         {
             
             bool keepRunning = true;
-            Calculator calc = new Calculator();
 
             while (keepRunning)
             {
@@ -36,7 +35,7 @@ namespace Calculator
                             //Add
                             if (InitOperation("add"))
                             {
-                                result = calc.Addition(numbers);
+                                result = Calculator.Addition(numbers);
                                 PrintResult('+');
                             }
                             break;
@@ -44,18 +43,15 @@ namespace Calculator
                             //Subtract
                             if (InitOperation("subtract"))
                             {
-                                double[] numbersArray = new double[] { (-11), (-8) };
-                                double resultArray = calc.Subtraction(numbersArray);
-                                result = calc.Subtraction(numbers);
+                                result = Calculator.Subtraction(numbers);
                                 PrintResult('-');
-                                Console.WriteLine("Array result: " + resultArray);
                             }
                             break;
                         case 3:
                             //Multiply
                             if (InitOperation("multiply"))
                             {
-                                result = calc.Multiplication(numbers);
+                                result = Calculator.Multiplication(numbers);
                                 PrintResult('*');
                             }
                             break;
@@ -64,7 +60,7 @@ namespace Calculator
                             if (InitOperation("divide"))
                             {
                                 try {
-                                    result = calc.Division(numbers);
+                                    result = Calculator.Division(numbers);
                                     PrintResult('/');
                                 }
                                     

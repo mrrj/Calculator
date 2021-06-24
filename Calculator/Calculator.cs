@@ -4,10 +4,12 @@ using System.Text;
 
 namespace Calculator
 {
+
+    //TODO: make everything static (& refactor accordingly...)
     public class Calculator
     {
      
-        public double Addition(List<double> numbers)
+        static public double Addition(List<double> numbers)
         {
             double x = 0;
             foreach (double y in numbers)
@@ -17,7 +19,7 @@ namespace Calculator
             return x;
         }
 
-        public double Addition(double[] numbers)
+        static public double Addition(double[] numbers)
         {
             double x = 0;
             foreach (double y in numbers)
@@ -27,7 +29,7 @@ namespace Calculator
             return x;
         }
 
-        public double Subtraction(List<double> numbers)
+        static public double Subtraction(List<double> numbers)
         {
             double x = 2 * numbers[0];
             foreach (double y in numbers)
@@ -37,7 +39,7 @@ namespace Calculator
             return x;
         }
 
-        public double Subtraction(double[] numbers)
+        static public double Subtraction(double[] numbers)
         {
             double x = 2 * numbers[0];
             foreach (double y in numbers)
@@ -46,7 +48,7 @@ namespace Calculator
             }
             return x;
         }
-        public double Multiplication(double[] numbers)
+        static public double Multiplication(double[] numbers)
         {
             double x = 1;
             foreach (double y in numbers)
@@ -57,7 +59,7 @@ namespace Calculator
         }
 
 
-        public double Division(List<double> numbers)
+        static public double Division(List<double> numbers)
         {
             double x = numbers[0];
 
@@ -74,7 +76,7 @@ namespace Calculator
 
             return x;
         }
-        public double Multiplication(List<double> numbers)
+        static public double Multiplication(List<double> numbers)
         {
             double x = 1;
             foreach (double y in numbers)
@@ -85,7 +87,7 @@ namespace Calculator
         }
  
       
-        public double Division(double[] numbers)
+        static public double Division(double[] numbers)
         {
             double x = numbers[0];
 
