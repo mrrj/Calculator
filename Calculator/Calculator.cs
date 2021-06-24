@@ -5,7 +5,6 @@ using System.Text;
 namespace Calculator
 {
 
-    //TODO: make everything static (& refactor accordingly...)
     public class Calculator
     {
      
@@ -48,6 +47,16 @@ namespace Calculator
             }
             return x;
         }
+
+        static public double Multiplication(List<double> numbers)
+        {
+            double x = 1;
+            foreach (double y in numbers)
+            {
+                x *= y;
+            }
+            return x;
+        }
         static public double Multiplication(double[] numbers)
         {
             double x = 1;
@@ -57,7 +66,7 @@ namespace Calculator
             }
             return x;
         }
-
+        
 
         static public double Division(List<double> numbers)
         {
@@ -74,15 +83,6 @@ namespace Calculator
                 x /= numbers[i];
             }
 
-            return x;
-        }
-        static public double Multiplication(List<double> numbers)
-        {
-            double x = 1;
-            foreach (double y in numbers)
-            {
-                x *= y;
-            }
             return x;
         }
  

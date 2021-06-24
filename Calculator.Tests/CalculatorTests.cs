@@ -74,6 +74,17 @@ namespace Calculator.Tests
         }
 
         [Fact]
+        public void MultiplicationTest()
+        {
+            double[] numbers = new double[] { 10, 5, 2 };
+
+            double multiplyNumbers = Calculator.Multiplication(numbers);
+
+            //result of multiplication should be 100
+            Assert.Equal<double>(100, multiplyNumbers);
+        }
+
+        [Fact]
         public void MultiplyNegatives()
         {
             double[] numbersPositive = new double[] { 5, 7 };
